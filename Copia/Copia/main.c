@@ -44,7 +44,7 @@ int main(void) {
 
 
 		// Chiamata alla funzione per la creazione delle copie
-		Copy(f, filename, ncopie);
+		Copy(f, filename, numero_copie);
 
 
 		// Messaggio di conferma sulla creazione delle copie

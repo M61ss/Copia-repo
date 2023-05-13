@@ -2,20 +2,19 @@
 
 char* NewName(const char* filename, const int numerocopia) {
 
+	// Controllo se il file ha un'estensione
 	bool e = false;
-
-	// controllo se il file ha un'estensione
 	Finder(&e, filename);
 
-	// alloco per il nuovo nome e stabilisco numero della copia
+	// Alloco per il nuovo nome e stabilisco numero della copia
 	char n[14] = "";
 	sprintf(n, " - Copia (%d)", numerocopia);
-	char* cpyname = malloc(strlen(filename) + strlen(n) + 1);     // va aggiunta la dimensione del numero che contrassegna la copia, cioè la stringa " (1)"
+	char* cpyname = malloc(strlen(filename) + strlen(n) + 1);     // Va aggiunta la dimensione del numero che contrassegna la copia, cioè la stringa " (1)"
 
-	// verifico che sia un file avente estensione
+	// Verifico che sia un file avente estensione
 	if (e == true) {
 
-		// copio il nome del file
+		// Copio il nome del file
 		char* nome = malloc(2);
 		size_t i = 0;
 		while (filename[i] != '.') {
@@ -26,7 +25,7 @@ char* NewName(const char* filename, const int numerocopia) {
 		}
 		nome[i] = 0;
 
-		// copio l'estensione
+		// Copio l'estensione
 		char* extention = malloc(2);
 		size_t j = 0;
 		while (filename[i] != 0) {
@@ -38,7 +37,7 @@ char* NewName(const char* filename, const int numerocopia) {
 		}
 		extention[j] = 0;
 
-		// compongo la prima parte
+		// Compongo la prima parte
 		char* tmpname = malloc(strlen(nome) + strlen(n) + 1);
 		strcpy(tmpname, nome);
 
@@ -49,7 +48,7 @@ char* NewName(const char* filename, const int numerocopia) {
 			strcat(tmpname, " - Copia");
 		}
 
-		// aggiungo l'estensione
+		// Aggiungo l'estensione
 		strcpy(cpyname, tmpname);
 
 		strcat(cpyname, extention);
@@ -59,7 +58,7 @@ char* NewName(const char* filename, const int numerocopia) {
 		free(extention);
 		free(tmpname);
 	}
-	// nel caso il file non abbia estensione procedo semplicemente
+	// Nel caso il file non abbia estensione procedo semplicemente
 	else {
 
 		if (numerocopia > 0) {

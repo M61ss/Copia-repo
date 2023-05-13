@@ -5,9 +5,9 @@ Funzione per creare un numero di copie uguale a quello richiesto dall'utente. Pe
 quanti ne sono richiesti.
 */
 
-void Copy(FILE* f, const char* filename, const int ncopie) {
+void Copy(FILE* f, const char* filename, const int numero_copie) {
 
-	for (int i = 0; i < ncopie; i++) {
+	for (int i = 0; i < numero_copie; i++) {
 
 		// Mi riporto sempre a inizio file
 		rewind(f);
