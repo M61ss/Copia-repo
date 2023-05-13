@@ -10,7 +10,7 @@
 // Funzioni di elaborazione
 extern void Copy(FILE* f, const char* filename, const int ncopie);
 extern char* NewName(const char* filename, const int numerocopia);
-extern void Finder(bool* e, const char* filename);
+extern void Finder(char* extension, const char* filename);
 
 // Tools
 extern void BackRemove(char* buffer);
