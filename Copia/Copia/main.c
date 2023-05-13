@@ -1,68 +1,65 @@
 #include "head.h"
 
+/*
+Il seguente programma non è pensato per essere utilizzato singolarmente, ma per essere inserito in un programma più complesso.
+In caso di necessità di creare delle copie di alcuni file per conto del programma che ha in uso questo stesso, il compito 
+di questo codice sarà di generare uno o più duplicati dei file specificati (controllando se essi esistano e che le copie vengano 
+generate correttamente). L'esecuzione intende interrompersi subito dopo la creazione (con successo o insuccesso) delle copie, 
+in quanto l'obiettivo è utilizzare tale codice come strumento integrato al programma che lo ha in uso tramite
+chiamata via linea di comando.
+*/
+
 int main(void) {
 
-	// decl
+	// Stringhe container per il nome del file e il numero di copie da creare
 	char filename[50];
-	filename[49] = 0;
-	int ncopie = 0;
+	char ncopie[8];
+
+	while (1) {
+
+		printf("Inserisci il percorso del file del quale vuoi creare una copia: ");
+		fgets(filename, 50, stdin);
+		BackRemove(filename);
+
+		printf("Inserisci il numero di copie che desideri creare: ");
+		fgets(ncopie, 8, stdin);
+		BackRemove(ncopie);
+
+		int numero_copie = atoi(ncopie);
+		if (numero_copie < 1) {
+
+			printf("Nessuna copia del file selezionato creata.\n");
+			break;
+		}
 
 
+		// Apertura del file
+		FILE* f = fopen(filename, "rb");
+		if (f == NULL) {
 
-	// inserimento nome file
-	printf("Inserisci il percorso del file del quale vuoi creare una copia: ");
-	if (scanf("%[^\n]c", filename) == 0) {
-		printf("Errore: il testo inserito non e' valido.\n\n");
-		return 0;
-	}
-	printf("\n");
-
-	// inserimento numero copie
-	printf("Inserisci il numero di copie che desideri creare: ");
-	if (scanf("%d", &ncopie) == 0) {
-		printf("Errore: il numero inserito non e' valido.\n\n");
-		return 0;
-	}
-	printf("\n");
-
-	// crt inserimenti
-	if (ncopie < 1) {
-		printf("Numero di copie inserito non valido.\n\n");
-		return 0;
-	}
+			printf("Il file specificato risulta essere inesistente.\n"
+				"Verificare che il percorso inserito sia valido, quindi riprovare.\n\n");
+			continue;
+		}
 
 
-
-	// fopen
-	FILE* f = fopen(filename, "rb");
-
-	// crt se esiste il file
-	if (f == NULL) {
-		printf("Il file risulta essere inesistente.\nVerificare che il percorso inserito sia valido, quindi riprovare.\n\n");
-		return 1;
-	}
+		// Chiamata alla funzione per la creazione delle copie
+		Copy(f, filename, ncopie);
 
 
+		// Messaggio di conferma sulla creazione delle copie
+		if (numero_copie == 1) {
+			printf("Copia del file creata correttamente.\n\n");
+		}
+		else {
+			printf("Copie del file create correttamente: %d.\n\n", numero_copie);
+		}
 
-	// f call
-	fcopy(f, filename, ncopie);
-
-
-
-	// mess
-	if (ncopie == 1) {
-		printf("Copia del file creata correttamente.\n\n");
-	}
-	else {
-		printf("Copie del file creata correttamente.\n\n");
+		// Chiudo il file
+		fclose(f);
+		break;
 	}
 
 
-
-	// closing
-	fclose(f);
-
-
-
-	return 0;
+	return EXIT_SUCCESS;
 }

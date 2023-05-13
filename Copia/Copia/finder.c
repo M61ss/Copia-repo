@@ -1,6 +1,6 @@
 #include "head.h"
 
-void finder(bool* e, const char* filename) {
+void Finder(bool* e, const char* filename) {
 
 	// vedo se ha estensione
 	if (strchr(filename, '.') != NULL) {

@@ -131,6 +131,7 @@
     <ClCompile Include="finder.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="newName.c" />
+    <ClCompile Include="tools.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="head.h" />

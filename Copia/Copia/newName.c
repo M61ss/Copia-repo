@@ -1,12 +1,11 @@
 #include "head.h"
 
-char* newName(const char* filename, const int numerocopia) {
+char* NewName(const char* filename, const int numerocopia) {
 
-	// decl
 	bool e = false;
 
-	// crt estensione
-	finder(&e, filename);
+	// controllo se il file ha un'estensione
+	Finder(&e, filename);
 
 	// alloco per il nuovo nome e stabilisco numero della copia
 	char n[14] = "";
