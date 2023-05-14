@@ -131,7 +131,6 @@
     <ClCompile Include="Finder.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="NewName.c" />
-    <ClCompile Include="tools.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="head.h" />

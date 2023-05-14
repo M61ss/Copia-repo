@@ -11,6 +11,3 @@
 extern void Copy(FILE* f, char* filename, const int ncopie);
 extern char* NewName(char* filename, const int numerocopia);
 extern void Finder(char* extension, char* filename);
-
-// Tools
-extern void BackRemove(char* buffer);

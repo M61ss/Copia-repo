@@ -19,11 +19,11 @@ int main(void) {
 
 		printf("Inserisci il percorso del file del quale vuoi creare una copia: ");
 		fgets(filename, 50, stdin);
-		BackRemove(filename);
+		filename[strlen(filename) - 1] = filename[strlen(filename)];
 
 		printf("Inserisci il numero di copie che desideri creare: ");
 		fgets(ncopie, 8, stdin);
-		BackRemove(ncopie);
+		ncopie[strlen(ncopie) - 1] = ncopie[strlen(ncopie)];
 
 		const int numero_copie = atoi(ncopie);
 		if (numero_copie < 1) {
